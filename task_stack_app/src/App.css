@@ -1,0 +1,84 @@
+.App{
+  background-color: #f6f6fa;
+}
+.Navbar{
+  background-color: lightgreen;
+  overflow: hidden;
+}
+.app-logo{
+  position: relative;
+  float: left;
+}
+.app-title{
+  position: relative;
+  float: left;
+  font-weight: bolder;
+  font-style: oblique;
+  color: darkgreen;
+  text-align: center;
+  padding: 5px;
+  margin-right: 10px;
+}
+.nav-buttons{
+  position: relative;
+  float: left;
+  top: 15px;
+}
+.home-nav-buttons{
+  background-color: #90ee90;
+  position: absolute;
+  top: 14px;
+  left: 490px;
+}
+.logout-button{
+  position: absolute;
+  left: 700px;
+}
+.about-button{
+  position: absolute;
+  left: 788px;
+}
+.login-section{
+  position: relative;
+}
+.calendar-section{
+  position: relative;
+  margin: 10px;
+}
+.fc-header-toolbar{
+  color: green;
+  text-emphasis: bold;
+  font-size: larger;
+}
+.list-view{
+  width: 50%;
+  float: left;
+  margin: 10px;
+}
+.task-stack{
+  position: relative;
+  float: left;
+  min-width: 30%;
+  max-width: 40%;
+  height: 200px;
+  background-size: contain;
+  margin: 10px;
+}
+.task-section{
+  overflow: hidden;
+  min-width: 1000px;
+}
+.task-editing{
+  position: relative;
+  right: 100%;
+  min-width: 50%;
+  width: 900px; 
+}
+.show-task{
+  position: relative;
+  float: left;
+  text-align: left;
+}
+.new-task{
+  position: relative;
+}
