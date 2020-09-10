@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_155749) do
+ActiveRecord::Schema.define(version: 2020_09_08_032408) do
 
   create_table "stacks", force: :cascade do |t|
     t.string "title"
     t.string "category"
     t.text "description"
     t.integer "length"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -25,7 +26,17 @@ ActiveRecord::Schema.define(version: 2020_09_02_155749) do
     t.string "title"
     t.string "description"
     t.string "start"
+    t.string "color"
     t.string "end"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_stacks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "stack_id"
+    t.integer "time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -33,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_09_02_155749) do
   create_table "user_tasks", force: :cascade do |t|
     t.integer "user_id"
     t.integer "task_id"
+    t.integer "time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -40,6 +52,9 @@ ActiveRecord::Schema.define(version: 2020_09_02_155749) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
+    t.integer "calevents"
+    t.integer "stackevents"
+    t.integer "minutes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form } from 'semantic-ui-react'
 
-function LogInModal(props) {
+function LogInModal() {
     const USERURL = "http://localhost:3000/users/login";
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -29,9 +29,16 @@ function LogInModal(props) {
       })
       .then(res => res.json())
       .then(data => { 
-        localStorage.token=data.token
-        props.setUser(data.user)
-        props.switchCalendar()
+        console.log(data)
+        if(data.error){
+          alert(data.error)
+          setPassword("")
+        }
+        else{
+          localStorage.token=data.token
+          localStorage.username=data.user.username
+          window.location.reload();
+        }
       })
     }
     
@@ -39,7 +46,7 @@ function LogInModal(props) {
       <Form>
         <Form.Group>
           <Form.Input  label="Username" placeholder="Username" onChange={(e)=>handleUsername(e)}></Form.Input>
-          <Form.Input  label="Password" placeholder="Pasword" type="password" onChange={(e)=>handlePassword(e)}></Form.Input>
+          <Form.Input  label="Password" placeholder="Password" type="password" value={password} onChange={(e)=>handlePassword(e)}></Form.Input>
         </Form.Group>
           <Form.Button onClick={logIn}>Submit</Form.Button>
       </Form>

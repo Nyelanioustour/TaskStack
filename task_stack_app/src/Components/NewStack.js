@@ -1,31 +1,28 @@
 import React, { useState } from 'react';
 import { Button, Form, TextArea } from 'semantic-ui-react'
 
-function NewTask(props) {
+function NewStack(props) {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-    const [date, setDate] = useState("")
-    const [start, setStart] = useState(props.start)
-    const [end, setEnd] = useState(props.end)
-    const TASKURL = "http://localhost:3000/tasks"
-    const USERTASKURL = "http://localhost:3000/user_tasks"
+    const [category, setCategory] = useState("")
+    const [length, setLength] = useState("")
+    const STACKURL = "http://localhost:3000/stacks"
+    const USERSTACKURL = "http://localhost:3000/user_stacks"
 
     function handleSubmit(event){
         event.preventDefault()
-        let task = {title: title, description: description, start:start, end:end, user_id:props.user.id}
+        let stack = {title: title, description: description, category:category, length:length, user_id:props.user.id}
         
-        fetch(TASKURL,{
+        fetch(STACKURL,{
             method:'post',
             headers:{
                 Authorization: `Bearer ${localStorage.token}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({ task })
+            body: JSON.stringify({ stack })
         }).then(response=>response.json()).then(data=>{
-            // window.location.reload()
-            props.getTasks()
-            props.setOpen(false)
+            window.location.reload()
         }
         )
     }
@@ -36,11 +33,11 @@ function NewTask(props) {
     function handleDescription(e){
         setDescription(e.target.value)
     }
-    function handleStart(e){
-        setStart(e.target.value)
+    function handleLength(e){
+        setLength(e.target.value)
     }
-    function handleEnd(e){
-        setEnd(e.target.value)
+    function handleCategory(e){
+        setCategory(e.target.value)
     }
   
     return (
@@ -55,11 +52,11 @@ function NewTask(props) {
                 value={description} width={10}></Form.Input>    
             </Form.Field>
             <Form.Field>
-                <Form.Input onChange={handleStart} label="Start Date" placeholder="Start Time" value={start} width={5}>
-                </Form.Input>    
+                <Form.Input onChange={handleLength} label="Length (minutes)" placeholder="Length" value={length} width={5}>
+                </Form.Input>
             </Form.Field>
             <Form.Field>
-                <Form.Input onChange={handleEnd} label="End Date" placeholder="End Time" value={end} width={5}></Form.Input>    
+                <Form.Input onChange={handleCategory} label="Category" placeholder="Category" value={category} width={5}></Form.Input>    
             </Form.Field>
             <Button type='submit' onClick={handleSubmit}>Submit</Button>
         </Form>
@@ -68,4 +65,4 @@ function NewTask(props) {
   }
   
   
-  export default NewTask;
+  export default NewStack;

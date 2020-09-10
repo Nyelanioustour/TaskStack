@@ -1,5 +1,27 @@
 .App{
   background-color: #f6f6fa;
+  overflow: hidden;
+}
+.app-video{
+  position: relative;
+  width: 810px;
+  left: 50px;
+}
+.scrolling{
+  overflow-y: scroll;
+  height: 850px;
+  scrollbar-width: none;
+}
+.home{
+  position: relative;
+  width: 1450px;
+  bottom: 10px;
+}
+.edit-button{
+  float: left;
+}
+.about-page{
+  background-color: lightgreen;
 }
 .Navbar{
   background-color: lightgreen;
@@ -8,6 +30,32 @@
 .app-logo{
   position: relative;
   float: left;
+}
+.efficiency{
+  position: relative;
+  float: left;
+  left: 20px;
+  /* bottom: 6px */
+  top: 6px;
+  height: 400px;
+}
+.user-info{
+  float: left;
+  position: relative;
+  top: 20px;
+  height: 400px;
+  left: 10px;
+
+}
+.user-minutes{
+  position: relative;
+  left: 50px;
+}
+.sort-options{
+  position: relative;
+  margin-top: 10px;
+  float: left;
+  left: 70px;
 }
 .app-title{
   position: relative;
@@ -19,6 +67,12 @@
   padding: 5px;
   margin-right: 10px;
 }
+.app-title a:link{
+  color:darkgreen
+}
+.app-title a:visited{
+  color:darkgreen
+}
 .nav-buttons{
   position: relative;
   float: left;
@@ -28,7 +82,7 @@
   background-color: #90ee90;
   position: absolute;
   top: 14px;
-  left: 490px;
+  left: 390px;
 }
 .logout-button{
   position: absolute;
@@ -45,10 +99,13 @@
   position: relative;
   margin: 10px;
 }
-.fc-header-toolbar{
-  color: green;
-  text-emphasis: bold;
-  font-size: larger;
+.stack-description{
+  text-indent: 10px;
+}
+.stack-length{
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
 }
 .list-view{
   width: 50%;
@@ -57,11 +114,15 @@
 }
 .task-stack{
   position: relative;
-  float: left;
-  min-width: 30%;
-  max-width: 40%;
+  /* float: left; */
+  bottom: 10px;
+  min-width: 100%;
   height: 200px;
   background-size: contain;
+}
+.task-stack-group{
+  position: relative;
+  left: 5%;
   margin: 10px;
 }
 .task-section{

@@ -1,4 +1,4 @@
 class Task < ApplicationRecord
-    has_many :users, through: :user_tasks
+    belongs_to :user
 
 end

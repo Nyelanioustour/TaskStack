@@ -14,10 +14,16 @@ class TasksController < ApplicationController
         task.update(strong_params)
         render json: task
     end    
+
+    def destroy
+        task = Task.find(params[:id])
+        task.destroy()
+        render json: task
+    end
 end
 
 private
 
 def strong_params
-    params.require(:task).permit(:title,:description,:start,:end)
+    params.require(:task).permit(:title,:description,:start,:end,:user_id,:color)
 end

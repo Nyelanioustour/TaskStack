@@ -1,8 +1,8 @@
 import React, { Component, useEffect, useState } from 'react'
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
-import NewTask from './NewTask.js'
+import NewStack from './NewStack.js'
 
-function NewTaskModal(props) {
+function NewStackModal(props) {
 
   return (
     <Modal
@@ -13,7 +13,7 @@ function NewTaskModal(props) {
       <Modal.Header>Enter New Task Details</Modal.Header>
       <Modal.Content>
         <Modal.Description>
-            <NewTask start={props.start} end={props.end} setOpen={props.setOpen} user={props.user} updateEvents={props.updateEvents} getTasks={props.getTasks}/>
+            <NewStack user={props.user}/>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
@@ -25,4 +25,4 @@ function NewTaskModal(props) {
   )
 }
 
-export default NewTaskModal
+export default NewStackModal
