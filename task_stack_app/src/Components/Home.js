@@ -33,8 +33,8 @@ const TASKURL = 'http://localhost:3000/tasks'
 function Home(props) {
   
   return (
-      <div>
-            <Image src='./Main.png' size='massive' centered />
+      <div className="question"> 
+            <Image src='./QuestionsorComments_.png' size='massive' centered />
       </div>
 
 

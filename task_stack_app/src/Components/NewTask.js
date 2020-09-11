@@ -12,7 +12,7 @@ function NewTask(props) {
 
     function handleSubmit(event){
         event.preventDefault()
-        let task = {title: title, description: description, start:start, end:end, user_id:props.user.id}
+        let task = {title: title, description: description, start:start, end:end, user_id:props.user.id, color:"darkcyan"}
         
         fetch(TASKURL,{
             method:'post',
@@ -23,7 +23,6 @@ function NewTask(props) {
             },
             body: JSON.stringify({ task })
         }).then(response=>response.json()).then(data=>{
-            // window.location.reload()
             props.getTasks()
             props.setOpen(false)
         }

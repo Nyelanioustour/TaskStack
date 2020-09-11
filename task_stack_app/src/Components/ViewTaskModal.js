@@ -32,7 +32,6 @@ function ViewTaskModal(props) {
           },
           body: JSON.stringify({ user_task })
       }).then(response=>response.json()).then(data=>console.log(data))
-        // window.location.reload()
         props.getTasks()
       }
       )}

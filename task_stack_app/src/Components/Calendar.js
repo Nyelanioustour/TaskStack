@@ -56,7 +56,6 @@ function Calendar(props) {
         if(user.username === localStorage.username){
           setUser(user)
         }
-        console.log(data)
 
         fetch(TASKURL,{
           method: "GET",
@@ -134,11 +133,12 @@ function Calendar(props) {
         }
       </div>    
 
+
       <div>
         <NewTaskModal open={open} setOpen={setOpen} start={start} end={end} user={props.user} getTasks={getTasks}/>
         <ViewTaskModal open={view} setOpen={setView} start={start} end={end} description={description} title={title} ID={ID} user={props.user} getTasks={getTasks}/>
       </div>
-
+        
     </section>
       );
     }

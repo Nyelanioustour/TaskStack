@@ -2,10 +2,17 @@
   background-color: #f6f6fa;
   overflow: hidden;
 }
+.question{
+  position: relative;
+  animation-name: spin;
+  animation-duration: 3s;
+}
 .app-video{
   position: relative;
   width: 810px;
   left: 50px;
+  animation-name: rise-left;
+  animation-duration: 1s;
 }
 .scrolling{
   overflow-y: scroll;
@@ -39,13 +46,17 @@
   top: 6px;
   height: 400px;
 }
+.user-section{
+  position: relative;
+  animation-name: rise-right;
+  animation-duration: 1s;
+}
 .user-info{
   float: left;
   position: relative;
   top: 20px;
   height: 400px;
   left: 10px;
-
 }
 .user-minutes{
   position: relative;
@@ -56,6 +67,8 @@
   margin-top: 10px;
   float: left;
   left: 70px;
+  animation-name:rise-left;
+  animation-duration: 1s;
 }
 .app-title{
   position: relative;
@@ -98,9 +111,25 @@
 .calendar-section{
   position: relative;
   margin: 10px;
+  animation-name: rise;
+  animation-duration: 1s;
 }
+@keyframes rise {
+  0%   { top:100px;}
+  100% {top:0px}
+}
+
 .stack-description{
   text-indent: 10px;
+}
+.right-flipped{
+  transform: rotateY(360deg);
+}
+.left-flipped{
+  transform: rotateY(-360deg);
+}
+.fc-toolbar-title{
+  color: green;
 }
 .stack-length{
   position: absolute;
@@ -108,17 +137,32 @@
   right: 5px;
 }
 .list-view{
+  position: relative;
   width: 50%;
   float: left;
   margin: 10px;
+  animation-name: rise-right;
+  animation-duration: 1s;
 }
 .task-stack{
   position: relative;
-  /* float: left; */
   bottom: 10px;
   min-width: 100%;
   height: 200px;
   background-size: contain;
+  animation-duration: .5s;
+}
+@keyframes rise-left {
+  0%   { top:20px; left: 100px;}
+  100% {top:0px; left: 70px;}
+}
+@keyframes rise-right {
+  0%   { top:20px; right: 300px;}
+  100% {top:0px; right: 0px;}
+}
+@keyframes spin {
+  0% {transform: rotateX(0deg);transform:rotateY(0deg)}
+  100%{transform: rotateX(360deg);transform: rotateY(360deg);}
 }
 .task-stack-group{
   position: relative;

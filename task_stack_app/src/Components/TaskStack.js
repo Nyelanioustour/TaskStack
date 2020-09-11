@@ -36,7 +36,6 @@ function TaskStack(props) {
           data.forEach(user => {
             if(user.username === localStorage.username){
               setUser(user)
-              console.log(user)
             }
     
             fetch(TASKURL,{
@@ -72,6 +71,7 @@ function TaskStack(props) {
             'Accept': 'application/json'
             }
           }).then(response => response.json().then(data => {
+              setCount(0)
               setStacks(data.filter(stack=>stack.user_id===user.id))
               setDisplayStacks(data.filter(stack=>stack.user_id===user.id))
               console.log(stacks)
@@ -86,6 +86,7 @@ function TaskStack(props) {
     function completeStack(){
       let URL = USERURL +"/"+props.user.id
       let stackevents = user.stackevents + 1
+      let minutes = user.minutes + stacks[count].length
         fetch(URL,{
             method:'PATCH',
             headers:{
@@ -93,7 +94,7 @@ function TaskStack(props) {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({ user:{stackevents:stackevents} })
+            body: JSON.stringify({ user:{stackevents:stackevents,minutes:minutes} })
         }).then(response=>response.json()).then((data)=>{
           let URL = STACKURL+"/"+stacks[count].id
           console.log(data)
@@ -105,12 +106,13 @@ function TaskStack(props) {
                   'Accept': 'application/json'
               }
           })
-          window.location.reload()
+          getStacks()
         }
           )
     }
 
     function increaseCount(){
+      animateRight()
         if (count === displayStacks.length -1){
             setCount(0)
         }
@@ -118,6 +120,7 @@ function TaskStack(props) {
     }
     
     function decreaseCount(){
+      animateRight()
         if (count===0){
             setCount(displayStacks.length-1)
         }
@@ -143,7 +146,6 @@ function TaskStack(props) {
         setDisplayStacks(stacks)
         setCount(0)
       }
-      
     }
     
     function handleTimeChange(e,{value}){
@@ -166,6 +168,9 @@ function TaskStack(props) {
             setCount(0)
           }
         }
+    }
+    function animateRight(){
+      console.log(document.getElementsByClassName('task-stack')[0].classList.toggle('right-flipped'))
     }
 
 
@@ -246,8 +251,8 @@ function TaskStack(props) {
             </Segment>
 
 
-
-            <Button.Group >
+            <div className="task-stack-buttons">
+            <Button.Group>
                 <Button onClick={decreaseCount} color="green" icon>
                     <Icon name="left arrow"/>
                 </Button>
@@ -259,6 +264,7 @@ function TaskStack(props) {
                     <Icon name="right arrow"/>
                 </Button>
             </Button.Group>
+            </div>
             <Card className="task-stack" color="green">
                 {displayStacks.length>0 ?
                 <div>
@@ -283,7 +289,7 @@ function TaskStack(props) {
                 }
             </Card>
           </div>
-            <NewStackModal  open={open} setOpen={setOpen} user={props.user}/>
+            <NewStackModal  open={open} setOpen={setOpen} user={props.user} getStacks={getStacks} setCount={setCount}/>
       </div>
     );
   }

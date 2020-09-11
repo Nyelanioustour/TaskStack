@@ -13,7 +13,7 @@ function NewStackModal(props) {
       <Modal.Header>Enter New Task Details</Modal.Header>
       <Modal.Content>
         <Modal.Description>
-            <NewStack user={props.user}/>
+            <NewStack user={props.user} getStacks={props.getStacks} setOpen={props.setOpen} setCount={props.setCount}/>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>

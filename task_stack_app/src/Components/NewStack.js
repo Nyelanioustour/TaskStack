@@ -22,7 +22,10 @@ function NewStack(props) {
             },
             body: JSON.stringify({ stack })
         }).then(response=>response.json()).then(data=>{
-            window.location.reload()
+            props.getStacks()
+            props.setOpen(false)
+            props.setCount(0)
+
         }
         )
     }
@@ -56,7 +59,11 @@ function NewStack(props) {
                 </Form.Input>
             </Form.Field>
             <Form.Field>
-                <Form.Input onChange={handleCategory} label="Category" placeholder="Category" value={category} width={5}></Form.Input>    
+                <Form.Input onChange={handleCategory} label="Category" placeholder="Category" value={category} width={5} control='select'>
+                <option value='Chore'>Chore</option>
+                <option value='Work'>Work</option>
+                <option value='School'>School</option>
+                </Form.Input>    
             </Form.Field>
             <Button type='submit' onClick={handleSubmit}>Submit</Button>
         </Form>
